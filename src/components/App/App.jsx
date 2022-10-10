@@ -2,8 +2,7 @@ import React from "react";
 
 import Header from "../Header/Header";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
-
-import "./App.scss";
+import HomePage from "../HomePage/HomePage";
 
 export const App = () => {
   const lightTheme = createTheme({
@@ -15,7 +14,9 @@ export const App = () => {
     <ThemeProvider theme={lightTheme}>
       <div className="app">
         <Header />
-        <div className="app-container"></div>
+        <div className="app-container">
+          <HomePage />
+        </div>
       </div>
     </ThemeProvider>
   );

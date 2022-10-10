@@ -1,11 +1,15 @@
 import React from "react";
 
-import Header from "../Header/Header";
-
-import "./HomePage.scss";
+import AboutInfo from "./AboutInfo/AboutInfo";
+import HomeButtons from "./HomeButtons/HomeButtons";
 
 export const HomePage = () => {
-  return <div className="homePage"></div>;
+  return (
+    <>
+      <AboutInfo />
+      <HomeButtons />
+    </>
+  );
 };
 
 export default HomePage;

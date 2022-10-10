@@ -4,9 +4,7 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Sidebar from "../Sidebar/Sidebar";
-
-import "./Header.scss";
+import Sidebar from "./Sidebar/Sidebar";
 
 export const Header = () => {
   return (
