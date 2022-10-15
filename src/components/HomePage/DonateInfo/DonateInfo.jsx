@@ -23,6 +23,7 @@ export const DonateInfo = () => {
             width: 1 / 3,
             px: 6,
             py: 5,
+            backgroundColor: "#f5f5f5",
           }}
         >
           <CardContent
@@ -40,7 +41,6 @@ export const DonateInfo = () => {
             <Typography variant="body1" gutterBottom="true" align="center">
               If you like our project and you would like to help us:
             </Typography>
-
             <Button
               href="https://www.paypal.com/donate/?hosted_button_id=C48S4DMFU9YCG"
               target="_blank"
@@ -54,9 +54,14 @@ export const DonateInfo = () => {
             <Typography variant="body1" gutterBottom="true" align="center">
               or
             </Typography>
-            <Typography variant="body1" gutterBottom="true" align="center">
+            <Typography
+              variant="body1"
+              gutterBottom="true"
+              align="center"
+              color="#1976d2"
+            >
               <Box fontWeight="fontWeightMedium" display="inline">
-                cripto wallet: 123456Ppfdfgfgj
+                Cripto wallet: 123456Ppfdfgfgj
               </Box>
             </Typography>
           </CardContent>
