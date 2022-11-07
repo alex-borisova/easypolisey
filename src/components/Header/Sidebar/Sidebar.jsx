@@ -13,6 +13,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import AddIcon from "@mui/icons-material/Add";
 import LaunchIcon from "@mui/icons-material/Launch";
 import MenuIcon from "@mui/icons-material/Menu";
+import { NavLink } from "react-router-dom";
 
 export const Sidebar = () => {
   const [isOpenModal, setIsOpenModal] = React.useState(false);
@@ -32,14 +33,17 @@ export const Sidebar = () => {
     {
       text: "Home Page",
       icon: <HomeIcon />,
+      href: "/home",
     },
     {
       text: "Create request",
       icon: <AddIcon />,
+      href: "/create_request",
     },
     {
       text: "View request",
       icon: <LaunchIcon />,
+      href: "",
     },
   ];
 
@@ -60,12 +64,21 @@ export const Sidebar = () => {
           >
             <List>
               {sidebarItems.map((item, index) => (
-                <ListItem key={index} disablePadding>
-                  <ListItemButton>
-                    <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText primary={item.text} />
-                  </ListItemButton>
-                </ListItem>
+                <NavLink
+                  key={index}
+                  to={item.href}
+                  style={{
+                    textDecoration: "none",
+                    color: "rgba(0, 0, 0, 0.87)",
+                  }}
+                >
+                  <ListItem disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemText primary={item.text} />
+                    </ListItemButton>
+                  </ListItem>
+                </NavLink>
               ))}
             </List>
             <Divider />
