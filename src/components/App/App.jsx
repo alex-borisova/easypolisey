@@ -19,13 +19,13 @@ export const App = () => {
     <ThemeProvider theme={lightTheme}>
       <Box sx={{ display: "flex", flexDirection: "column", minHeight: 800 }}>
         <Header />
-        <div className="app-container">
+        <Box className="app-container" sx={{ flexGrow: 1 }}>
           <Routes>
             <Route path="/home" element={<HomePage />} />
             <Route path="/create_request" element={<NewRequest />} />
             <Route path="/" element={<Navigate to="/home" replace />} />
           </Routes>
-        </div>
+        </Box>
         <Footer />
       </Box>
     </ThemeProvider>
