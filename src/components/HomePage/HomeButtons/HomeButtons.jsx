@@ -2,6 +2,7 @@ import React from "react";
 
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import { NavLink } from "react-router-dom";
 
 export const HomeButtons = () => {
   const buttonStyle = {
@@ -17,9 +18,16 @@ export const HomeButtons = () => {
       justifyContent="center"
       sx={{ py: 3, px: 2 }}
     >
-      <Button variant="contained" color="info" size="large" sx={buttonStyle}>
-        Create request
-      </Button>
+      <NavLink
+        to="/create_request"
+        style={{
+          textDecoration: "none",
+        }}
+      >
+        <Button variant="contained" color="info" size="large" sx={buttonStyle}>
+          Create request
+        </Button>
+      </NavLink>
       <Button variant="outlined" color="info" size="large" sx={buttonStyle}>
         View request
       </Button>

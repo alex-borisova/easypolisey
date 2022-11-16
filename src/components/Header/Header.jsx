@@ -8,7 +8,7 @@ import Sidebar from "./Sidebar/Sidebar";
 
 export const Header = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <AppBar position="static" color="default">
         <Toolbar>
           <Typography
