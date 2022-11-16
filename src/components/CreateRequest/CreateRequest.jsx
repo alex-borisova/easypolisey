@@ -89,7 +89,7 @@ export const CreateRequest = () => {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <RequestContent />
+            <RequestContent activeStep={activeStep} />
             <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
               <Button
                 disabled={activeStep === 0}
