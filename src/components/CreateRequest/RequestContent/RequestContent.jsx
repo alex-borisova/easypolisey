@@ -15,7 +15,7 @@ export const RequestContent = (props) => {
   const isPersonalData = activeStep === 3;
 
   return (
-    <Box my={5}>
+    <Box my={5} display="flex" justifyContent="center">
       {isService && <StepService />}
       {isLocation && <StepLocation />}
       {isDate && <StepDate />}

@@ -16,6 +16,19 @@ export const CreateRequest = () => {
     "Enter persola data",
   ];
 
+  // const [requestData, setRequestData] = React.useState({
+  //   name: "",
+  //   last_name: "",
+  //   date_of_birth: "",
+  //   phone_number: "",
+  //   email: "",
+  //   booking_period: 0,
+  //   is_with_children: false,
+  //   children_quantity: 0,
+  //   service_type_id: 0,
+  //   service_points: [],
+  // });
+
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
 
