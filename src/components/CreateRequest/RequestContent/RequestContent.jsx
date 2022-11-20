@@ -18,7 +18,7 @@ export const RequestContent = (props) => {
       {isLocation && (
         <StepLocation handleChange={handleChange} requestData={requestData} />
       )}
-      {isPersonalData && <StepPersonalData />}
+      {isPersonalData && <StepPersonalData handleChange={handleChange} />}
     </Box>
   );
 };

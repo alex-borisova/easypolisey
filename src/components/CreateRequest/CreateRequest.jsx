@@ -27,13 +27,15 @@ export const CreateRequest = () => {
     service_type_id: 0,
     service_points: [],
   });
-  // console.log(requestData);
+  console.log(requestData);
 
   const handleChange = (prop) => (event) => {
     if (prop === "service_points") {
       const points = [...requestData.service_points];
       points.push(+event.target.value);
       setRequestData({ ...requestData, [prop]: points });
+    } else if (prop === "is_with_children") {
+      setRequestData({ ...requestData, [prop]: event.target.checked });
     } else {
       setRequestData({ ...requestData, [prop]: event.target.value });
     }
