@@ -28,7 +28,7 @@ export const CreateRequest = () => {
     service_type_id: 0,
     service_points: [],
   });
-  console.log(requestData);
+  // console.log(requestData);
 
   const handleChange = (prop) => (event) => {
     if (prop === "service_points") {

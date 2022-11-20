@@ -13,7 +13,20 @@ export const StepLocation = (props) => {
   const { handleChange, requestData } = props;
 
   const [locations, setLocations] = useState([]);
-  const newLocations = locations.map((item) => ({ ...item, isCheked: false }));
+
+  const setChecked = (event) => {
+    const newLocations = locations.map((item) =>
+      item.id === +event.target.value
+        ? { ...item, isCheked: !item.isCheked }
+        : { ...item }
+    );
+    setLocations(newLocations);
+  };
+
+  const handleChangeItem = (event) => {
+    setChecked(event);
+    handleChange("service_points")(event);
+  };
 
   const getLocations = async () => {
     await fetch(`${apiUrl}/service_types/${requestData.service_type_id}`, {
@@ -24,7 +37,9 @@ export const StepLocation = (props) => {
           return text && JSON.parse(text);
         })
       )
-      .then((res) => setLocations(res));
+      .then((res) =>
+        setLocations(res.map((item) => ({ ...item, isCheked: false })))
+      );
   };
 
   useEffect(() => {
@@ -40,13 +55,13 @@ export const StepLocation = (props) => {
           Board service office and click “Next”.
         </FormLabel>
         <FormGroup>
-          {newLocations.map((item, index) => (
+          {locations.map((item, index) => (
             <FormControlLabel
               key={index}
               control={
                 <Checkbox
                   checked={item.isCheked}
-                  onChange={handleChange("service_points")}
+                  onChange={handleChangeItem}
                   name={item.name}
                   value={item.id}
                 />
