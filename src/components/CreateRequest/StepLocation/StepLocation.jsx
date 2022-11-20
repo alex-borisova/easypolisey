@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Box from "@mui/material/Box";
 import FormLabel from "@mui/material/FormLabel";
@@ -7,53 +7,68 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
-export const StepLocation = () => {
-  const [state, setState] = useState({
-    gilad: true,
-    jason: false,
-    antoine: false,
-  });
+import { apiUrl } from "../../../apiUrl";
 
-  const handleChange = (event) => {
-    setState({
-      ...state,
-      [event.target.name]: event.target.checked,
-    });
+export const StepLocation = (props) => {
+  const { handleChange, requestData } = props;
+
+  const [locations, setLocations] = useState([]);
+
+  const setChecked = (event) => {
+    const newLocations = locations.map((item) =>
+      item.id === +event.target.value
+        ? { ...item, isCheked: !item.isCheked }
+        : { ...item }
+    );
+    setLocations(newLocations);
   };
 
-  const { gilad, jason, antoine } = state;
+  const handleChangeItem = (event) => {
+    setChecked(event);
+    handleChange("service_points")(event);
+  };
+
+  const getLocations = async () => {
+    await fetch(`${apiUrl}/service_types/${requestData.service_type_id}`, {
+      method: "GET",
+    })
+      .then((response) =>
+        response.text().then((text) => {
+          return text && JSON.parse(text);
+        })
+      )
+      .then((res) =>
+        setLocations(res.map((item) => ({ ...item, isCheked: false })))
+      );
+  };
+
+  useEffect(() => {
+    getLocations();
+  }, []);
 
   return (
     <Box sx={{ display: "flex" }}>
       <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-        <FormLabel component="legend">
+        <FormLabel component="span" sx={{ fontSize: 20, margin: "14px 0" }}>
           You are allowed to select multiple client service office, but only one
           will be booked. Please select the appropriate Police and Border Guard
           Board service office and click “Next”.
         </FormLabel>
         <FormGroup>
-          <FormControlLabel
-            control={
-              <Checkbox checked={gilad} onChange={handleChange} name="gilad" />
-            }
-            label="Gilad Gray"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={jason} onChange={handleChange} name="jason" />
-            }
-            label="Jason Killian"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={antoine}
-                onChange={handleChange}
-                name="antoine"
-              />
-            }
-            label="Antoine Llorca"
-          />
+          {locations.map((item, index) => (
+            <FormControlLabel
+              key={index}
+              control={
+                <Checkbox
+                  checked={item.isCheked}
+                  onChange={handleChangeItem}
+                  name={item.name}
+                  value={item.id}
+                />
+              }
+              label={`${item.name} (${item.address})`}
+            />
+          ))}
         </FormGroup>
       </FormControl>
     </Box>

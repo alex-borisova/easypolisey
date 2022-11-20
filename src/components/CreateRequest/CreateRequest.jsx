@@ -16,18 +16,29 @@ export const CreateRequest = () => {
     "Enter persola data",
   ];
 
-  // const [requestData, setRequestData] = React.useState({
-  //   name: "",
-  //   last_name: "",
-  //   date_of_birth: "",
-  //   phone_number: "",
-  //   email: "",
-  //   booking_period: 0,
-  //   is_with_children: false,
-  //   children_quantity: 0,
-  //   service_type_id: 0,
-  //   service_points: [],
-  // });
+  const [requestData, setRequestData] = React.useState({
+    name: "",
+    last_name: "",
+    date_of_birth: "",
+    phone_number: "",
+    email: "",
+    booking_period: 0,
+    is_with_children: false,
+    children_quantity: 0,
+    service_type_id: 0,
+    service_points: [],
+  });
+  // console.log(requestData);
+
+  const handleChange = (prop) => (event) => {
+    if (prop === "service_points") {
+      const points = [...requestData.service_points];
+      points.push(+event.target.value);
+      setRequestData({ ...requestData, [prop]: points });
+    } else {
+      setRequestData({ ...requestData, [prop]: event.target.value });
+    }
+  };
 
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -70,7 +81,11 @@ export const CreateRequest = () => {
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <RequestContent activeStep={activeStep} />
+          <RequestContent
+            activeStep={activeStep}
+            handleChange={handleChange}
+            requestData={requestData}
+          />
           <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
             <Button
               color="inherit"

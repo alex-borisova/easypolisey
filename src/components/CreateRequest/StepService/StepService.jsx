@@ -8,13 +8,8 @@ import FormLabel from "@mui/material/FormLabel";
 
 import { apiUrl } from "../../../apiUrl";
 
-export const StepService = () => {
+export const StepService = (props) => {
   const [services, setServices] = useState([]);
-  const [value, setValue] = useState("");
-
-  const handleRadioChange = (event) => {
-    setValue(typeof event.target.value);
-  };
 
   const getServices = async () => {
     await fetch(`${apiUrl}/service_types`, {
@@ -47,7 +42,7 @@ export const StepService = () => {
           aria-labelledby="radio-buttons-group-label"
           defaultValue={undefined}
           name="radio-buttons-group"
-          onChange={handleRadioChange}
+          onChange={props.handleChange("service_type_id")}
         >
           {services.map((item, index) => (
             <FormControlLabel
