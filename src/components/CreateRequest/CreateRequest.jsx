@@ -12,8 +12,7 @@ export const CreateRequest = () => {
   const steps = [
     "Choose service",
     "Choose location",
-    "Choose date and time",
-    "Enter persola data",
+    "Choose period and enter persola data",
   ];
 
   const [requestData, setRequestData] = React.useState({
