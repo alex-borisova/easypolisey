@@ -29,13 +29,16 @@ export const CreateRequest = () => {
   });
   console.log(requestData);
 
-  const handleChange = (prop) => (event) => {
+  const handleChange = (prop, string) => (event) => {
     if (prop === "service_points") {
       const points = [...requestData.service_points];
       points.push(+event.target.value);
       setRequestData({ ...requestData, [prop]: points });
     } else if (prop === "is_with_children") {
       setRequestData({ ...requestData, [prop]: event.target.checked });
+    } else if (prop === "date_of_birth") {
+      console.log("test2");
+      setRequestData({ ...requestData, [prop]: string });
     } else {
       setRequestData({ ...requestData, [prop]: event.target.value });
     }
