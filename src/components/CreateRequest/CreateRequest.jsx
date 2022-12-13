@@ -8,12 +8,13 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import RequestContent from "./RequestContent/RequestContent";
 
+import { apiUrl } from "../../apiUrl";
+
 export const CreateRequest = () => {
   const steps = [
     "Choose service",
     "Choose location",
-    "Choose date and time",
-    "Enter persola data",
+    "Choose period and enter persola data",
   ];
 
   const [requestData, setRequestData] = React.useState({
@@ -22,19 +23,26 @@ export const CreateRequest = () => {
     date_of_birth: "",
     phone_number: "",
     email: "",
-    booking_period: 0,
+    booking_period: 3,
     is_with_children: false,
     children_quantity: 0,
     service_type_id: 0,
     service_points: [],
   });
-  // console.log(requestData);
 
-  const handleChange = (prop) => (event) => {
+  const handleChange = (prop, string, data) => (event) => {
     if (prop === "service_points") {
-      const points = [...requestData.service_points];
-      points.push(+event.target.value);
-      setRequestData({ ...requestData, [prop]: points });
+      const points = data
+        .filter((item) => item.isCheked)
+        .map((item) => item.id);
+      setRequestData({
+        ...requestData,
+        [prop]: points,
+      });
+    } else if (prop === "is_with_children") {
+      setRequestData({ ...requestData, [prop]: event.target.checked });
+    } else if (prop === "date_of_birth") {
+      setRequestData({ ...requestData, [prop]: string });
     } else {
       setRequestData({ ...requestData, [prop]: event.target.value });
     }
@@ -54,8 +62,69 @@ export const CreateRequest = () => {
     setActiveStep(step);
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
+  const [errorMessage, setErrorMessage] = React.useState("");
+  const [idRequest, setIdRequest] = React.useState(0);
+
+  const handleRespons = (response) => {
+    return response.text().then((text) => {
+      return text && JSON.parse(text);
+    });
+  };
+
+  const postData = async () => {
+    await fetch(`${apiUrl}/application`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: requestData.name,
+        last_name: requestData.last_name,
+        date_of_birth: requestData.date_of_birth,
+        phone_number: requestData.phone_number,
+        email: requestData.email,
+        booking_period: requestData.booking_period,
+        is_with_children: requestData.is_with_children,
+        children_quantity: requestData.children_quantity,
+        service_type_id: requestData.service_type_id,
+        service_points: requestData.service_points,
+      }),
+    }).then((res) => {
+      if (res.status !== 200 && res.status !== 201) {
+        handleRespons(res).then((response) => {
+          setErrorMessage(response.message);
+        });
+      } else {
+        handleRespons(res).then((response) => {
+          setIdRequest(response.id);
+        });
+      }
+    });
+  };
+
+  const handleConfirm = () => {
+    handleNext();
+    postData();
+  };
+
+  const disableButton = () => {
+    if (activeStep === 0) {
+      return requestData.service_type_id === 0;
+    }
+    if (activeStep === 1) {
+      return requestData.service_points.length === 0;
+    }
+    if (activeStep === 2) {
+      return (
+        !Boolean(requestData.name) ||
+        !Boolean(requestData.last_name) ||
+        !Boolean(requestData.date_of_birth) ||
+        !Boolean(requestData.phone_number) ||
+        !Boolean(requestData.email) ||
+        (requestData.is_with_children && requestData.children_quantity === 0)
+      );
+    }
+    return false;
   };
 
   return (
@@ -72,12 +141,10 @@ export const CreateRequest = () => {
       {activeStep === steps.length ? (
         <React.Fragment>
           <Typography sx={{ mt: 2, mb: 1 }}>
-            All steps completed - you&apos;re finished
+            {errorMessage
+              ? errorMessage
+              : `Request was created. Application number - ${idRequest}`}
           </Typography>
-          <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-            <Box sx={{ flex: "1 1 auto" }} />
-            <Button onClick={handleReset}>Reset</Button>
-          </Box>
         </React.Fragment>
       ) : (
         <React.Fragment>
@@ -96,9 +163,15 @@ export const CreateRequest = () => {
               Back
             </Button>
             <Box sx={{ flex: "1 1 auto" }} />
-            <Button onClick={handleNext}>
-              {activeStep === steps.length - 1 ? "Finish" : "Next"}
-            </Button>
+            {activeStep === steps.length - 1 ? (
+              <Button onClick={handleConfirm} disabled={disableButton()}>
+                Confirm
+              </Button>
+            ) : (
+              <Button onClick={handleNext} disabled={disableButton()}>
+                Next
+              </Button>
+            )}
           </Box>
         </React.Fragment>
       )}

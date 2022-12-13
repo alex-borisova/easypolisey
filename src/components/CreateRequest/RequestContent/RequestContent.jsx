@@ -2,7 +2,6 @@ import React from "react";
 
 import Box from "@mui/material/Box";
 
-import StepDate from "../StepDate/StepDate";
 import StepLocation from "../StepLocation/StepLocation";
 import StepPersonalData from "../StepPersonalData/StepPersonalData";
 import StepService from "../StepService/StepService";
@@ -11,8 +10,7 @@ export const RequestContent = (props) => {
   const { activeStep, handleChange, requestData } = props;
   const isService = activeStep === 0;
   const isLocation = activeStep === 1;
-  const isDate = activeStep === 2;
-  const isPersonalData = activeStep === 3;
+  const isPersonalData = activeStep === 2;
 
   return (
     <Box my={5} display="flex" justifyContent="center">
@@ -20,8 +18,7 @@ export const RequestContent = (props) => {
       {isLocation && (
         <StepLocation handleChange={handleChange} requestData={requestData} />
       )}
-      {isDate && <StepDate />}
-      {isPersonalData && <StepPersonalData />}
+      {isPersonalData && <StepPersonalData handleChange={handleChange} />}
     </Box>
   );
 };

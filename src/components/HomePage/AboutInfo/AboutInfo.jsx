@@ -26,10 +26,10 @@ export const AboutInfo = () => {
         elevation={0}
         children={
           <>
-            <Typography variant="h4" gutterBottom="true" align="center">
+            <Typography variant="h4" gutterBottom={true} align="center">
               Hi everyone!
             </Typography>
-            <Typography variant="body1" gutterBottom="true" align="center">
+            <Typography variant="body1" gutterBottom={true} align="center">
               Our service can help you book time in the Estonian police! All you
               have to do is select type of service and the city, and then we
               will find the first free slot and book an appointment for you!
@@ -38,8 +38,8 @@ export const AboutInfo = () => {
         }
       />
       <Image
+        duration={2000}
         component="img"
-        shift="center"
         position="static"
         height={256}
         width={256}

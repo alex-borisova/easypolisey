@@ -5,7 +5,6 @@ import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import Box from "@mui/material/Box";
 
 export const DonateInfo = () => {
   return (
@@ -38,7 +37,7 @@ export const DonateInfo = () => {
               p: 0,
             }}
           >
-            <Typography variant="body1" gutterBottom="true" align="center">
+            <Typography variant="body1" gutterBottom={true} align="center">
               If you like our project and you would like to help us:
             </Typography>
             <Button
@@ -51,18 +50,16 @@ export const DonateInfo = () => {
             >
               Donate us
             </Button>
-            <Typography variant="body1" gutterBottom="true" align="center">
+            <Typography variant="body1" gutterBottom={true} align="center">
               or
             </Typography>
             <Typography
               variant="body1"
-              gutterBottom="true"
+              gutterBottom={true}
               align="center"
               color="#1976d2"
             >
-              <Box fontWeight="fontWeightMedium" display="inline">
-                Cripto wallet: 123456Ppfdfgfgj
-              </Box>
+              Cripto wallet: 123456Ppfdfgfgj
             </Typography>
           </CardContent>
         </Card>
