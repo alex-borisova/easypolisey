@@ -38,6 +38,7 @@ export const AboutInfo = () => {
         }
       />
       <Image
+        duration={2000}
         component="img"
         position="static"
         height={256}

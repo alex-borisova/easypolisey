@@ -40,6 +40,7 @@ export const StepPersonalData = (props) => {
   const [children, setChildren] = useState(numberChildren[0].value);
 
   const handleChangeChildren = (event) => {
+    console.log(event.target.value);
     setChildren(+event.target.value);
     props.handleChange("children_quantity")(event);
   };

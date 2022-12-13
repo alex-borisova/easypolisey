@@ -21,11 +21,11 @@ export const StepLocation = (props) => {
         : { ...item }
     );
     setLocations(newLocations);
+    handleChange("service_points", undefined, newLocations)(event);
   };
 
   const handleChangeItem = (event) => {
     setChecked(event);
-    handleChange("service_points")(event);
   };
 
   const getLocations = async () => {
