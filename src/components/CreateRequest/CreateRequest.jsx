@@ -6,9 +6,10 @@ import Step from "@mui/material/Step";
 import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import RequestContent from "./RequestContent/RequestContent";
 
 import { apiUrl } from "../../apiUrl";
+import RequestContent from "./RequestContent/RequestContent";
+import SuccessPage from "./SuccessPage/SuccessPage";
 
 export const CreateRequest = () => {
   const steps = [
@@ -140,11 +141,7 @@ export const CreateRequest = () => {
       </Stepper>
       {activeStep === steps.length ? (
         <React.Fragment>
-          <Typography sx={{ mt: 2, mb: 1 }}>
-            {errorMessage
-              ? errorMessage
-              : `Request was created. Application number - ${idRequest}`}
-          </Typography>
+          {errorMessage ? errorMessage : <SuccessPage number={idRequest} />}
         </React.Fragment>
       ) : (
         <React.Fragment>
