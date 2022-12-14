@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import Box from "@mui/material/Box";
 import FormLabel from "@mui/material/FormLabel";
 import FormControl from "@mui/material/FormControl";
 import FormGroup from "@mui/material/FormGroup";
@@ -44,15 +43,16 @@ export const StepLocation = (props) => {
 
   useEffect(() => {
     getLocations();
+    /* eslint-disable */
   }, []);
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <form>
       <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
         <FormLabel component="span" sx={{ fontSize: 20, margin: "14px 0" }}>
           You are allowed to select multiple client service office, but only one
-          will be booked. Please select the appropriate Police and Border Guard
-          Board service office and click “Next”.
+          will be booked. <br /> Please select the appropriate Police and Border
+          Guard Board service office and click “Next”.
         </FormLabel>
         <FormGroup>
           {locations.map((item, index) => (
@@ -71,7 +71,7 @@ export const StepLocation = (props) => {
           ))}
         </FormGroup>
       </FormControl>
-    </Box>
+    </form>
   );
 };
 
