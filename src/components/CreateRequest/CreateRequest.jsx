@@ -5,11 +5,11 @@ import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 
 import { apiUrl } from "../../apiUrl";
 import RequestContent from "./RequestContent/RequestContent";
 import SuccessPage from "./SuccessPage/SuccessPage";
+import ErrorInformer from "./ErrorInformer/ErrorInformer";
 
 export const CreateRequest = () => {
   const steps = [
@@ -66,6 +66,8 @@ export const CreateRequest = () => {
   const [errorMessage, setErrorMessage] = React.useState("");
   const [idRequest, setIdRequest] = React.useState(0);
 
+  const [openInformer, setOpenInformer] = React.useState(false);
+
   const handleRespons = (response) => {
     return response.text().then((text) => {
       return text && JSON.parse(text);
@@ -94,17 +96,18 @@ export const CreateRequest = () => {
       if (res.status !== 200 && res.status !== 201) {
         handleRespons(res).then((response) => {
           setErrorMessage(response.message);
+          setOpenInformer(true);
         });
       } else {
         handleRespons(res).then((response) => {
           setIdRequest(response.id);
+          handleNext();
         });
       }
     });
   };
 
   const handleConfirm = () => {
-    handleNext();
     postData();
   };
 
@@ -141,10 +144,15 @@ export const CreateRequest = () => {
       </Stepper>
       {activeStep === steps.length ? (
         <React.Fragment>
-          {errorMessage ? errorMessage : <SuccessPage number={idRequest} />}
+          {!errorMessage && <SuccessPage number={idRequest} />}
         </React.Fragment>
       ) : (
         <React.Fragment>
+          <ErrorInformer
+            open={openInformer}
+            setOpen={setOpenInformer}
+            errorMessage={errorMessage}
+          />
           <RequestContent
             activeStep={activeStep}
             handleChange={handleChange}
