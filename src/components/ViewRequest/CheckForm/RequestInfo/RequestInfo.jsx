@@ -35,7 +35,7 @@ export const RequestInfo = (props) => {
       {requestData?.status === 0 && (
         <>
           <Typography gutterBottom>
-            Service: {requestData?.service_name}
+            Service: {requestData?.service_type_name}
           </Typography>
           <Typography gutterBottom>
             Now we are looking for a free time slot in the nearest{" "}
@@ -44,7 +44,9 @@ export const RequestInfo = (props) => {
           </Typography>
           <Box ml={1}>
             {requestData?.service_points?.map((item, index) => (
-              <Typography key={index}>{item}</Typography>
+              <Typography gutterBottom key={index}>
+                - {item}
+              </Typography>
             ))}
           </Box>
           <Typography fontWeight="fontWeightMedium" gutterBottom>
