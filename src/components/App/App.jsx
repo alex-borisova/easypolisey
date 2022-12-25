@@ -8,6 +8,7 @@ import Header from "../Header/Header";
 import HomePage from "../HomePage/HomePage";
 import Footer from "../Footer/Footer";
 import NewRequest from "../CreateRequest/CreateRequest";
+import ViewRequest from "../ViewRequest/ViewRequest";
 
 export const App = () => {
   const lightTheme = createTheme({
@@ -23,6 +24,7 @@ export const App = () => {
           <Routes>
             <Route path="/home" element={<HomePage />} />
             <Route path="/create_request" element={<NewRequest />} />
+            <Route path="/view_request" element={<ViewRequest />} />
             <Route path="/" element={<Navigate to="/home" replace />} />
           </Routes>
         </Box>

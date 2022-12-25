@@ -103,6 +103,7 @@ export const StepPersonalData = (props) => {
                   startAdornment: (
                     <InputAdornment position="start">+372</InputAdornment>
                   ),
+                  inputProps: { maxlength: 8 },
                 }}
               />
               <DatePicker
