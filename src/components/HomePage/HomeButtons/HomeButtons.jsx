@@ -28,9 +28,16 @@ export const HomeButtons = () => {
           Create request
         </Button>
       </NavLink>
-      <Button variant="outlined" color="info" size="large" sx={buttonStyle}>
-        View request
-      </Button>
+      <NavLink
+        to="/view_request"
+        style={{
+          textDecoration: "none",
+        }}
+      >
+        <Button variant="outlined" color="info" size="large" sx={buttonStyle}>
+          View request
+        </Button>
+      </NavLink>
     </Stack>
   );
 };

@@ -10,6 +10,7 @@ import { apiUrl } from "../../apiUrl";
 import RequestContent from "./RequestContent/RequestContent";
 import SuccessPage from "./SuccessPage/SuccessPage";
 import ErrorInformer from "./ErrorInformer/ErrorInformer";
+import { handleRespons } from "../../constants/handleRespons";
 
 export const CreateRequest = () => {
   const steps = [
@@ -67,12 +68,6 @@ export const CreateRequest = () => {
   const [idRequest, setIdRequest] = React.useState(0);
 
   const [openInformer, setOpenInformer] = React.useState(false);
-
-  const handleRespons = (response) => {
-    return response.text().then((text) => {
-      return text && JSON.parse(text);
-    });
-  };
 
   const postData = async () => {
     await fetch(`${apiUrl}/application`, {
