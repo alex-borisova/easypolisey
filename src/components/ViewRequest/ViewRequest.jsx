@@ -29,10 +29,10 @@ export const ViewRequest = () => {
 
   return (
     <Box mx={5} my={7} display="flex" justifyContent="center">
-      {!!requestData ? (
-        <RequestInfo requestData={requestData} />
-      ) : (
+      {!requestData ? (
         <CheckForm getData={getData} error={error} />
+      ) : (
+        <RequestInfo requestData={requestData} />
       )}
     </Box>
   );
