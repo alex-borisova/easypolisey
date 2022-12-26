@@ -57,7 +57,7 @@ export const RequestInfo = (props) => {
   return (
     <>
       {success ? (
-        <CancelSuccess textMessage="success" />
+        <CancelSuccess textMessage={success} />
       ) : (
         <Box>
           <Typography gutterBottom>
