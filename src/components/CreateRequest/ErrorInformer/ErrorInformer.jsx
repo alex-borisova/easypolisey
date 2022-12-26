@@ -5,12 +5,8 @@ import AlertTitle from "@mui/material/AlertTitle";
 import Collapse from "@mui/material/Collapse";
 
 export const ErrorInformer = (props) => {
-  const { open, setOpen, errorMessage } = props;
+  const { open, setOpen, errorMessage, style } = props;
 
-  const alertStyle = {
-    marginBottom: "-20px",
-    marginTop: "30px",
-  };
   return (
     <Collapse in={open}>
       <Alert
@@ -18,7 +14,7 @@ export const ErrorInformer = (props) => {
         onClose={() => {
           setOpen(false);
         }}
-        sx={alertStyle}
+        sx={style}
       >
         <AlertTitle>Error</AlertTitle>
         {errorMessage}

@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { apiUrl } from "../../../apiUrl";
 import { handleRespons } from "../../../constants/handleRespons";
 import CancelSuccess from "../../CancelRequest/CancelSuccess/CancelSuccess";
+import ErrorInformer from "../../CreateRequest/ErrorInformer/ErrorInformer";
 
 export const RequestInfo = (props) => {
   const { requestData } = props;
@@ -31,6 +32,7 @@ export const RequestInfo = (props) => {
 
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
+  const [openInformer, setOpenInformer] = React.useState(false);
 
   const putData = async () => {
     await fetch(`${apiUrl}/application/${requestData.id}`, {
@@ -45,6 +47,7 @@ export const RequestInfo = (props) => {
       if (res.status !== 200 && res.status !== 201) {
         handleRespons(res).then((response) => {
           setError(response.message);
+          setOpenInformer(true);
         });
       } else {
         handleRespons(res).then((response) => {
@@ -60,6 +63,14 @@ export const RequestInfo = (props) => {
         <CancelSuccess textMessage={success} />
       ) : (
         <Box>
+          {error && (
+            <ErrorInformer
+              open={openInformer}
+              setOpen={setOpenInformer}
+              errorMessage={error}
+              style={{ mt: 3 }}
+            />
+          )}
           <Typography gutterBottom>
             {requestData?.name} {requestData?.last_name}, your application
             number {requestData?.id} is{" "}
@@ -127,11 +138,6 @@ export const RequestInfo = (props) => {
             <Typography gutterBottom>
               If you want to create a new application - come back to the main
               page and create one.
-            </Typography>
-          )}
-          {error && (
-            <Typography mt={3} color="#d32f2f">
-              {error}
             </Typography>
           )}
           <Box mt={5}>

@@ -68,6 +68,10 @@ export const CreateRequest = () => {
   const [idRequest, setIdRequest] = React.useState(0);
 
   const [openInformer, setOpenInformer] = React.useState(false);
+  const alertStyle = {
+    marginBottom: "-20px",
+    marginTop: "30px",
+  };
 
   const postData = async () => {
     await fetch(`${apiUrl}/application`, {
@@ -103,6 +107,8 @@ export const CreateRequest = () => {
   };
 
   const handleConfirm = () => {
+    setOpenInformer(false);
+    setErrorMessage("");
     postData();
   };
 
@@ -147,6 +153,7 @@ export const CreateRequest = () => {
             open={openInformer}
             setOpen={setOpenInformer}
             errorMessage={errorMessage}
+            style={alertStyle}
           />
           <RequestContent
             activeStep={activeStep}

@@ -5,11 +5,12 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 
+import ErrorInformer from "../../CreateRequest/ErrorInformer/ErrorInformer";
+
 export const CheckForm = (props) => {
-  const { error, getData } = props;
+  const { error, getData, setOpenInformer, openInformer } = props;
 
   const navigate = useNavigate();
 
@@ -26,6 +27,14 @@ export const CheckForm = (props) => {
   return (
     <form>
       <FormControl sx={{ alignItems: "center" }}>
+        {error && (
+          <ErrorInformer
+            open={openInformer}
+            setOpen={setOpenInformer}
+            errorMessage={error}
+            style={{ minWidth: "200px" }}
+          />
+        )}
         <FormLabel
           id="radio-buttons-group-label"
           component="span"
@@ -59,17 +68,12 @@ export const CheckForm = (props) => {
             fullWidth
           />
         </Box>
-        {error && (
-          <Typography mt={3} color="#d32f2f">
-            {error}
-          </Typography>
-        )}
         <Box mt={3}>
           <Button
             variant="contained"
             sx={{ marginRight: "20px" }}
             onClick={() => getData(id, email)}
-            disabled={!id} //add email
+            disabled={!id || !email}
           >
             Review
           </Button>

@@ -13,6 +13,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import AddIcon from "@mui/icons-material/Add";
 import LaunchIcon from "@mui/icons-material/Launch";
 import MenuIcon from "@mui/icons-material/Menu";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { NavLink } from "react-router-dom";
 
 export const Sidebar = () => {
@@ -43,7 +44,12 @@ export const Sidebar = () => {
     {
       text: "View request",
       icon: <LaunchIcon />,
-      href: "",
+      href: "/view_request",
+    },
+    {
+      text: "Cancel request",
+      icon: <DeleteIcon />,
+      href: "/cancel_request",
     },
   ];
 
