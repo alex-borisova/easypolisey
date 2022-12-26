@@ -5,14 +5,14 @@ import Box from "@mui/material/Box";
 import { apiUrl } from "../../apiUrl";
 import { handleRespons } from "../../constants/handleRespons";
 import CheckForm from "./CheckForm/CheckForm";
-import RequestInfo from "./CheckForm/RequestInfo/RequestInfo";
+import RequestInfo from "./RequestInfo/RequestInfo";
 
 export const ViewRequest = () => {
   const [error, setError] = useState("");
   const [requestData, setRequestData] = useState();
 
-  const getData = async (id) => {
-    await fetch(`${apiUrl}/application/${id}`, {
+  const getData = async (id, email) => {
+    await fetch(`${apiUrl}/application/${id}?email=${email}`, {
       method: "GET",
     }).then((res) => {
       if (res.status !== 200 && res.status !== 201) {

@@ -68,7 +68,7 @@ export const CheckForm = (props) => {
           <Button
             variant="contained"
             sx={{ marginRight: "20px" }}
-            onClick={() => getData(id)}
+            onClick={() => getData(id, email)}
             disabled={!id} //add email
           >
             Review
