@@ -48,7 +48,7 @@ export const SuccessPage = (props) => {
       </Typography>
       <Box display="flex" mt={6}>
         {infoData.map((item, index) => (
-          <Box sx={infoStyle} key={index}>
+          <Box sx={infoStyle} key={index} px={15}>
             <Image
               duration={0}
               component="img"
