@@ -6,8 +6,9 @@ import { useNavigate } from "react-router-dom";
 import FormWrapper from "../common/FormWrapper/FormWrapper";
 import { apiUrl } from "../../apiUrl";
 import { handleRespons } from "../../constants/handleRespons";
+import CancelSuccess from "../CancelRequest/CancelSuccess/CancelSuccess";
 
-export const CancelRequest = (props) => {
+export const CancelRequest = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const [openInformer, setOpenInformer] = useState(false);
@@ -38,18 +39,21 @@ export const CancelRequest = (props) => {
   };
   return (
     <Box mx={5} my={7} display="flex" justifyContent="center">
-      <FormWrapper
-        title="To cancel an appointment, enter the booking number or personal data
+      {success ? (
+        <CancelSuccess textMessage={success} />
+      ) : (
+        <FormWrapper
+          title="To cancel an appointment, enter the booking number or personal data
           and click “Cancel”."
-        error={error}
-        setOpenInformer={setOpenInformer}
-        openInformer={openInformer}
-        nameFirstButton="Cancel"
-        actionFunction={putData}
-        nameSecondButton="Back to home"
-        backFunction={() => navigate("/home")}
-        success={success}
-      />
+          error={error}
+          setOpenInformer={setOpenInformer}
+          openInformer={openInformer}
+          nameFirstButton="Cancel"
+          actionFunction={putData}
+          nameSecondButton="Back to home"
+          backFunction={() => navigate("/home")}
+        />
+      )}
     </Box>
   );
 };

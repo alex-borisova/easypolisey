@@ -7,7 +7,6 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
 import ErrorInformer from "../../CreateRequest/ErrorInformer/ErrorInformer";
-import CancelSuccess from "../../CancelRequest/CancelSuccess/CancelSuccess";
 
 export const FormWrapper = (props) => {
   const {
@@ -19,7 +18,6 @@ export const FormWrapper = (props) => {
     actionFunction,
     nameSecondButton,
     backFunction,
-    success,
   } = props;
 
   const [id, setId] = useState("");
@@ -33,69 +31,63 @@ export const FormWrapper = (props) => {
   };
 
   return (
-    <>
-      {success ? (
-        <CancelSuccess textMessage={success} />
-      ) : (
-        <form>
-          <FormControl sx={{ alignItems: "center" }}>
-            {error && (
-              <ErrorInformer
-                open={openInformer}
-                setOpen={setOpenInformer}
-                errorMessage={error}
-                style={{ minWidth: "200px" }}
-              />
-            )}
-            <FormLabel
-              id="radio-buttons-group-label"
-              component="span"
-              sx={{ fontSize: 20, margin: "14px 0" }}
-            >
-              {title}
-            </FormLabel>
-            <Box
-              sx={{ minWidth: "400px" }}
-              display="flex"
-              justifyContent="center"
-              flexDirection="column"
-            >
-              <TextField
-                id="request-id"
-                label="Reservation number"
-                variant="standard"
-                margin="normal"
-                value={id}
-                onChange={handleId}
-                fullWidth
-              />
-              <TextField
-                id="email"
-                label="Email"
-                variant="standard"
-                margin="normal"
-                value={email}
-                onChange={handleEmail}
-                fullWidth
-              />
-            </Box>
-            <Box mt={3}>
-              <Button
-                variant="contained"
-                sx={{ marginRight: "20px" }}
-                onClick={() => actionFunction(id, email)}
-                disabled={!id || !email}
-              >
-                {nameFirstButton}
-              </Button>
-              <Button variant="outlined" onClick={backFunction}>
-                {nameSecondButton}
-              </Button>
-            </Box>
-          </FormControl>
-        </form>
-      )}
-    </>
+    <form>
+      <FormControl sx={{ alignItems: "center" }}>
+        {error && (
+          <ErrorInformer
+            open={openInformer}
+            setOpen={setOpenInformer}
+            errorMessage={error}
+            style={{ minWidth: "200px" }}
+          />
+        )}
+        <FormLabel
+          id="radio-buttons-group-label"
+          component="span"
+          sx={{ fontSize: 20, margin: "14px 0" }}
+        >
+          {title}
+        </FormLabel>
+        <Box
+          sx={{ minWidth: "400px" }}
+          display="flex"
+          justifyContent="center"
+          flexDirection="column"
+        >
+          <TextField
+            id="request-id"
+            label="Reservation number"
+            variant="standard"
+            margin="normal"
+            value={id}
+            onChange={handleId}
+            fullWidth
+          />
+          <TextField
+            id="email"
+            label="Email"
+            variant="standard"
+            margin="normal"
+            value={email}
+            onChange={handleEmail}
+            fullWidth
+          />
+        </Box>
+        <Box mt={3}>
+          <Button
+            variant="contained"
+            sx={{ marginRight: "20px" }}
+            onClick={() => actionFunction(id, email)}
+            disabled={!id || !email}
+          >
+            {nameFirstButton}
+          </Button>
+          <Button variant="outlined" onClick={backFunction}>
+            {nameSecondButton}
+          </Button>
+        </Box>
+      </FormControl>
+    </form>
   );
 };
 
