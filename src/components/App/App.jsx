@@ -9,6 +9,7 @@ import HomePage from "../HomePage/HomePage";
 import Footer from "../Footer/Footer";
 import NewRequest from "../CreateRequest/CreateRequest";
 import ViewRequest from "../ViewRequest/ViewRequest";
+import CancelRequest from "../CancelRequest/CancelRequest";
 
 export const App = () => {
   const lightTheme = createTheme({
@@ -25,6 +26,7 @@ export const App = () => {
             <Route path="/home" element={<HomePage />} />
             <Route path="/create_request" element={<NewRequest />} />
             <Route path="/view_request" element={<ViewRequest />} />
+            <Route path="/cancel_request" element={<CancelRequest />} />
             <Route path="/" element={<Navigate to="/home" replace />} />
           </Routes>
         </Box>
