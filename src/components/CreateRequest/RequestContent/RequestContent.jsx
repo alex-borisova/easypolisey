@@ -13,7 +13,7 @@ export const RequestContent = (props) => {
   const isPersonalData = activeStep === 2;
 
   return (
-    <Box my={5} display="flex" justifyContent="center">
+    <Box my={3} display="flex" justifyContent="center">
       {isService && <StepService handleChange={handleChange} />}
       {isLocation && (
         <StepLocation handleChange={handleChange} requestData={requestData} />

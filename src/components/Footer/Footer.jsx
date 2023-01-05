@@ -4,8 +4,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import EmailIcon from "@mui/icons-material/Email";
-
-import BottomNavigation from "@mui/material/BottomNavigation";
+import Toolbar from "@mui/material/Toolbar";
 
 export const Footer = () => {
   const info = [
@@ -32,7 +31,7 @@ export const Footer = () => {
   };
 
   return (
-    <BottomNavigation sx={styleBottom}>
+    <Toolbar sx={styleBottom}>
       <Typography variant="body1" color="#fff">
         &#169; 2022 Easypolisey
       </Typography>
@@ -46,7 +45,7 @@ export const Footer = () => {
           </Box>
         ))}
       </Box>
-    </BottomNavigation>
+    </Toolbar>
   );
 };
 

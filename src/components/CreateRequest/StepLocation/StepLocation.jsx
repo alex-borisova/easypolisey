@@ -5,6 +5,7 @@ import FormControl from "@mui/material/FormControl";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import Typography from "@mui/material/Typography";
 
 import { apiUrl } from "../../../apiUrl";
 
@@ -49,6 +50,14 @@ export const StepLocation = (props) => {
   return (
     <form>
       <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
+        <Typography
+          align="center"
+          variant="h5"
+          color="primary"
+          fontWeight={500}
+        >
+          Choose location
+        </Typography>
         <FormLabel component="span" sx={{ fontSize: 20, margin: "14px 0" }}>
           You are allowed to select multiple client service office, but only one
           will be booked. <br /> Please select the appropriate Police and Border
@@ -67,6 +76,7 @@ export const StepLocation = (props) => {
                 />
               }
               label={`${item.name} (${item.address})`}
+              sx={{ mb: 2 }}
             />
           ))}
         </FormGroup>

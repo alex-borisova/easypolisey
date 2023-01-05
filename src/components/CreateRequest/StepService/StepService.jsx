@@ -7,6 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 
 import { apiUrl } from "../../../apiUrl";
+import { Typography } from "@mui/material";
 
 export const StepService = (props) => {
   const [services, setServices] = useState([]);
@@ -30,6 +31,14 @@ export const StepService = (props) => {
   return (
     <form>
       <FormControl>
+        <Typography
+          align="center"
+          variant="h5"
+          fontWeight={500}
+          color="primary"
+        >
+          Choose service
+        </Typography>
         <FormLabel
           id="radio-buttons-group-label"
           component="span"
@@ -50,6 +59,7 @@ export const StepService = (props) => {
               value={item.id}
               control={<Radio />}
               label={item.name}
+              sx={{ mb: "12px" }}
             />
           ))}
         </RadioGroup>
