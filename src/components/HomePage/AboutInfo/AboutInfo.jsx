@@ -1,42 +1,37 @@
 import React from "react";
 
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Image from "mui-image";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export const AboutInfo = () => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("lg"));
+
   return (
     <Box
       sx={{
         display: "flex",
-        flexDirection: "row",
+        flexDirection: matches ? "column" : "row",
         justifyContent: "space-evenly",
         alignItems: "center",
-        "& > :not(style)": {
-          m: 1,
-          width: 1 / 2,
-          alignSelf: "center",
-        },
-        py: 3,
-        px: 2,
       }}
     >
-      <Paper
-        elevation={0}
-        children={
-          <>
-            <Typography variant="h4" gutterBottom={true} align="center">
-              Hi everyone!
-            </Typography>
-            <Typography variant="body1" gutterBottom={true} align="center">
-              Our service can help you book time in the Estonian police! All you
-              have to do is select type of service and the city, and then we
-              will find the first free slot and book an appointment for you!
-            </Typography>
-          </>
-        }
-      />
+      <Box mb={4} maxWidth={760}>
+        <Typography variant="h4" gutterBottom={true} align="center">
+          Hi everyone!
+        </Typography>
+        <Typography variant="body1" gutterBottom={true} align="center">
+          Our service can help you book time in the Estonian police! Usually it
+          takes several weeks to wait in a digital queue to apply for ID, visa
+          or any other document in Tallinn. Our service allows you to find and
+          book an appointment in the nearest dates! All you have to do is select
+          the type of service and the city, and then we will find the first free
+          slot and book an appointment for you!
+        </Typography>
+      </Box>
       <Image
         duration={2000}
         component="img"

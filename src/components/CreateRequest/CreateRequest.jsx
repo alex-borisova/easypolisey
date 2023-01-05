@@ -133,13 +133,11 @@ export const CreateRequest = () => {
   };
 
   return (
-    <Box mx={5} my={7}>
+    <Box my={5}>
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => (
           <Step key={label}>
-            <StepButton color="inherit" onClick={handleStep(index)}>
-              {label}
-            </StepButton>
+            <StepButton color="inherit" onClick={handleStep(index)} />
           </Step>
         ))}
       </Stepper>

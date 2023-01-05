@@ -17,11 +17,12 @@ export const App = () => {
       type: "light",
     },
   });
+
   return (
     <ThemeProvider theme={lightTheme}>
-      <Box sx={{ display: "flex", flexDirection: "column", minHeight: 800 }}>
+      <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
         <Header />
-        <Box className="app-container" sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1, p: 3 }}>
           <Routes>
             <Route path="/home" element={<HomePage />} />
             <Route path="/create_request" element={<NewRequest />} />

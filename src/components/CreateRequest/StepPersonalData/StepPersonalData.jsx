@@ -11,6 +11,9 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { Box } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -18,6 +21,9 @@ import moment from "moment";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 
 export const StepPersonalData = (props) => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
+
   const [isChildren, setIsChildren] = useState(false);
   const handleChangeIsChildren = (event) => {
     setIsChildren(event.target.checked);
@@ -64,6 +70,14 @@ export const StepPersonalData = (props) => {
   return (
     <form>
       <FormControl>
+        <Typography
+          align="center"
+          variant="h5"
+          color="primary"
+          fontWeight={500}
+        >
+          Choose period and enter persola data
+        </Typography>
         <FormLabel
           id="radio-buttons-group-label"
           component="span"
@@ -75,7 +89,7 @@ export const StepPersonalData = (props) => {
         </FormLabel>
         <Box display="flex" justifyContent="center">
           <LocalizationProvider dateAdapter={AdapterMoment}>
-            <Stack spacing={3} sx={{ width: "35%" }}>
+            <Stack spacing={3} sx={{ width: matches ? "100%" : "40%" }}>
               <TextField
                 id="first-name"
                 label="First Name"
@@ -133,6 +147,10 @@ export const StepPersonalData = (props) => {
                     </MenuItem>
                   ))}
                 </Select>
+                <Typography color="rgba(0, 0, 0, 0.6)" mt={1}>
+                  *For example: 1 week means that you expect to book an
+                  appointment in the nearest week
+                </Typography>
               </FormControl>
               <FormControlLabel
                 control={

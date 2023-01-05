@@ -3,8 +3,13 @@ import React from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { NavLink } from "react-router-dom";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export const HomeButtons = () => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("lg"));
+
   const buttonStyle = {
     px: 5,
     py: 3,
@@ -13,10 +18,10 @@ export const HomeButtons = () => {
 
   return (
     <Stack
-      spacing={5}
+      spacing={matches ? 2 : 5}
       direction="row"
       justifyContent="center"
-      sx={{ py: 3, px: 2 }}
+      sx={{ my: 3 }}
     >
       <NavLink
         to="/create_request"
