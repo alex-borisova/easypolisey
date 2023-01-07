@@ -7,7 +7,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Typography from "@mui/material/Typography";
 
-import { apiUrl } from "../../../apiUrl";
+import { apiUrl } from "../../../constants/apiUrl";
 
 export const StepLocation = (props) => {
   const { handleChange, requestData } = props;

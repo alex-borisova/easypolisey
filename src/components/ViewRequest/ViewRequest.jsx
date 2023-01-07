@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Box from "@mui/material/Box";
 
-import { apiUrl } from "../../apiUrl";
+import { apiUrl } from "../../constants/apiUrl";
 import { handleRespons } from "../../constants/handleRespons";
 import CheckForm from "./CheckForm/CheckForm";
 import RequestInfo from "./RequestInfo/RequestInfo";

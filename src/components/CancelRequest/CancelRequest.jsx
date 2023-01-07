@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 
 import FormWrapper from "../common/FormWrapper/FormWrapper";
-import { apiUrl } from "../../apiUrl";
+import { apiUrl } from "../../constants/apiUrl";
 import { handleRespons } from "../../constants/handleRespons";
 import CancelSuccess from "../CancelRequest/CancelSuccess/CancelSuccess";
 
