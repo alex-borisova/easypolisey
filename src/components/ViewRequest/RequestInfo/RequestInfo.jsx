@@ -74,7 +74,10 @@ export const RequestInfo = (props) => {
           <Typography gutterBottom>
             {requestData?.name} {requestData?.last_name}, your application
             number {requestData?.id} is{" "}
-            <strong>{translateStatus(requestData?.status)}</strong>.
+            <Box component="span" fontWeight="fontWeightBold">
+              {translateStatus(requestData?.status)}
+            </Box>
+            .
           </Typography>
           {requestData?.status === 0 && (
             <>
