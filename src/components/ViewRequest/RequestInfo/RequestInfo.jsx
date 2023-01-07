@@ -82,8 +82,7 @@ export const RequestInfo = (props) => {
               </Typography>
               <Typography gutterBottom>
                 Now we are looking for a free time slot in the nearest{" "}
-                <strong>{requestData?.booking_period} days</strong> below
-                service points:
+                {requestData?.booking_period} days below service points:
               </Typography>
               <Box ml={1}>
                 {requestData?.service_points?.map((item, index) => (
