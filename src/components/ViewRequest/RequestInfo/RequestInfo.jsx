@@ -71,10 +71,10 @@ export const RequestInfo = (props) => {
               style={{ mt: 3 }}
             />
           )}
-          <Typography gutterBottom>
+          <Typography gutterBottom component="div">
             {requestData?.name} {requestData?.last_name}, your application
             number {requestData?.id} is{" "}
-            <Box component="span" fontWeight="fontWeightBold">
+            <Box display="inline" fontWeight="fontWeightBold">
               {translateStatus(requestData?.status)}
             </Box>
             .
