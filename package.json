@@ -1,6 +1,6 @@
 {
   "name": "easypolisey",
-  "proxy": "http://146.190.206.64",
+  "proxy": "http://167.99.141.2",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
