@@ -30,6 +30,12 @@ export const StepPersonalData = (props) => {
     props.handleChange("is_with_children")(event);
   };
 
+  const [isConsent, setIsConsent] = useState(false);
+  const handleChangeIsConsent = (event) => {
+    setIsConsent(event.target.checked);
+    props.handleChange("consent")(event);
+  };
+
   const numberChildren = [
     { value: "0", disabled: true },
     { value: 1, disabled: false },
@@ -186,6 +192,20 @@ export const StepPersonalData = (props) => {
                   </Select>
                 </FormControl>
               )}
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={isConsent}
+                    onChange={handleChangeIsConsent}
+                  />
+                }
+                label=" I consent to the processing of the submitted personal data. Personal data are processed solely for booking the service. Initial data processor is booking service. Data is stored in the booking system of 3 months after application creation. You can delete your data by cancelling application here. After time slot booking - the chief data processor is the Police and Border Guard Board (139 Pärnu Road, Tallinn 15060; email: ppa@politsei.ee). The authorised processor, who is the service provider of the booking system, is Hansab AS (11 Keevise St, Tallinn 11415; email: info@hansab.ee). The data are stored in the booking system for 3 months as of the appointment date and will be deleted thereafter. Consent to the processing of personal data may be withdrawn at any time by cancelling the booking at https://broneering.politsei.ee. Withdrawal of consent will not affect any data processing already carried out under the consent."
+                componentsProps={{
+                  typography: {
+                    sx: { fontSize: "12px" },
+                  },
+                }}
+              />
             </Stack>
           </LocalizationProvider>
         </Box>

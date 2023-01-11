@@ -10,7 +10,7 @@ export const Footer = () => {
   const info = [
     {
       icon: <EmailIcon sx={{ color: "#fff" }} />,
-      text: "mail@example.com",
+      text: "eestibroneer@gmail.com",
     },
     {
       icon: <TelegramIcon sx={{ color: "#fff" }} />,
@@ -33,7 +33,7 @@ export const Footer = () => {
   return (
     <Toolbar sx={styleBottom}>
       <Typography variant="body1" color="#fff">
-        &#169; 2022 Easypolisey
+        &#169; 2022 EestiBroneer
       </Typography>
       <Box display="flex" flexDirection="column">
         {info.map((item, index) => (
