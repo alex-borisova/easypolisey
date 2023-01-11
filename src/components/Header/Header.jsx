@@ -24,7 +24,7 @@ export const Header = () => {
               sx={{ flexGrow: 1 }}
               color="primary"
             >
-              EasyPolisey
+              EestiBroneer
             </Typography>
           </NavLink>
           <Sidebar />

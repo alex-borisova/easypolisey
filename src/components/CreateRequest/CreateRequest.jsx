@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
@@ -13,6 +14,8 @@ import ErrorInformer from "./ErrorInformer/ErrorInformer";
 import { handleRespons } from "../../constants/handleRespons";
 
 export const CreateRequest = () => {
+  const navigate = useNavigate();
+
   const steps = [
     "Choose service",
     "Choose location",
@@ -30,6 +33,7 @@ export const CreateRequest = () => {
     children_quantity: 0,
     service_type_id: 0,
     service_points: [],
+    consent: false,
   });
 
   const handleChange = (prop, string, data) => (event) => {
@@ -41,7 +45,7 @@ export const CreateRequest = () => {
         ...requestData,
         [prop]: points,
       });
-    } else if (prop === "is_with_children") {
+    } else if (prop === "is_with_children" || prop === "consent") {
       setRequestData({ ...requestData, [prop]: event.target.checked });
     } else if (prop === "date_of_birth") {
       setRequestData({ ...requestData, [prop]: string });
@@ -57,6 +61,9 @@ export const CreateRequest = () => {
   };
 
   const handleBack = () => {
+    if (activeStep === 0) {
+      return navigate(-1);
+    }
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
@@ -126,7 +133,8 @@ export const CreateRequest = () => {
         !Boolean(requestData.date_of_birth) ||
         !Boolean(requestData.phone_number) ||
         !Boolean(requestData.email) ||
-        (requestData.is_with_children && requestData.children_quantity === 0)
+        (requestData.is_with_children && requestData.children_quantity === 0) ||
+        !Boolean(requestData.consent)
       );
     }
     return false;
@@ -159,12 +167,7 @@ export const CreateRequest = () => {
             requestData={requestData}
           />
           <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-            <Button
-              color="inherit"
-              disabled={activeStep === 0}
-              onClick={handleBack}
-              sx={{ mr: 1 }}
-            >
+            <Button color="inherit" onClick={handleBack} sx={{ mr: 1 }}>
               Back
             </Button>
             <Box sx={{ flex: "1 1 auto" }} />
