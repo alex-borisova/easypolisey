@@ -167,7 +167,7 @@ export const CreateRequest = () => {
             requestData={requestData}
           />
           <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-            <Button color="inherit" onClick={handleBack} sx={{ mr: 1 }}>
+            <Button color="primary" onClick={handleBack} sx={{ mr: 1 }}>
               Back
             </Button>
             <Box sx={{ flex: "1 1 auto" }} />
