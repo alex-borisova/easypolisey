@@ -1,1 +1,1 @@
-export const apiUrl = "http://167.99.141.2";
+export const apiUrl = "https://www.broneer-service.ru";
