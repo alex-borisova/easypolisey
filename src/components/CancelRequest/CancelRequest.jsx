@@ -38,7 +38,7 @@ export const CancelRequest = () => {
     });
   };
   return (
-    <Box mx={5} my={7} display="flex" justifyContent="center">
+    <Box display="flex" justifyContent="center">
       {success ? (
         <CancelSuccess textMessage={success} />
       ) : (

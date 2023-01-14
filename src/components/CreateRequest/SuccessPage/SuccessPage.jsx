@@ -3,8 +3,13 @@ import React from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Image from "mui-image";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export const SuccessPage = (props) => {
+  const theme = useTheme();
+  const isSmall = useMediaQuery(theme.breakpoints.down("lg"));
+
   const infoData = [
     {
       src: "https://cdn-icons-png.flaticon.com/512/2665/2665525.png",
@@ -46,9 +51,14 @@ export const SuccessPage = (props) => {
       <Typography variant="h4" align="center" color="text.secondary">
         How it works?
       </Typography>
-      <Box display="flex" mt={6}>
+      <Box
+        display="flex"
+        flexDirection={isSmall ? "column" : "row"}
+        mt={6}
+        gap={5}
+      >
         {infoData.map((item, index) => (
-          <Box sx={infoStyle} key={index} px={15}>
+          <Box sx={infoStyle} key={index}>
             <Image
               duration={0}
               component="img"

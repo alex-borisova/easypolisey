@@ -2,7 +2,7 @@ import React from "react";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import TelegramIcon from "@mui/icons-material/Telegram";
+// import TelegramIcon from "@mui/icons-material/Telegram";
 import EmailIcon from "@mui/icons-material/Email";
 import Toolbar from "@mui/material/Toolbar";
 
@@ -12,10 +12,11 @@ export const Footer = () => {
       icon: <EmailIcon sx={{ color: "#fff" }} />,
       text: "eestibroneer@gmail.com",
     },
-    {
-      icon: <TelegramIcon sx={{ color: "#fff" }} />,
-      text: "@examplegroup",
-    },
+    // maybe later
+    // {
+    //   icon: <TelegramIcon sx={{ color: "#fff" }} />,
+    //   text: "@examplegroup",
+    // },
   ];
   const styleInfo = {
     display: "flex",
@@ -28,6 +29,7 @@ export const Footer = () => {
     alignItems: "center",
     px: 3,
     py: 1,
+    gap: 3,
   };
 
   return (

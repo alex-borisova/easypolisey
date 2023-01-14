@@ -73,7 +73,8 @@ export const RequestInfo = (props) => {
           )}
           <Typography gutterBottom component="div">
             {requestData?.name} {requestData?.last_name}, your application
-            number {requestData?.id} is {translateStatus(requestData?.status)}.
+            number {requestData?.id} is{" "}
+            <strong>{translateStatus(requestData?.status)}</strong>.
           </Typography>
           {requestData?.status === 0 && (
             <>
@@ -81,8 +82,9 @@ export const RequestInfo = (props) => {
                 Service: {requestData?.service_type_name}
               </Typography>
               <Typography gutterBottom>
-                Now we are looking for a free time slot in the nearest{" "}
-                {requestData?.booking_period} days below service points:
+                Now we are looking for a free time slot{" "}
+                <strong>in the nearest {requestData?.booking_period}</strong>{" "}
+                days below service points:
               </Typography>
               <Box ml={1}>
                 {requestData?.service_points?.map((item, index) => (
@@ -138,7 +140,7 @@ export const RequestInfo = (props) => {
               page and create one.
             </Typography>
           )}
-          <Box mt={5}>
+          <Box mt={5} display="flex">
             {requestData?.status === 0 && (
               <Button
                 variant="contained"

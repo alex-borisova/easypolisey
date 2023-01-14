@@ -8,13 +8,13 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 export const AboutInfo = () => {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("lg"));
+  const isSmall = useMediaQuery(theme.breakpoints.down("lg"));
 
   return (
     <Box
       sx={{
         display: "flex",
-        flexDirection: matches ? "column" : "row",
+        flexDirection: isSmall ? "column" : "row",
         justifyContent: "space-evenly",
         alignItems: "center",
       }}

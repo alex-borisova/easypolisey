@@ -49,7 +49,7 @@ export const FormWrapper = (props) => {
           {title}
         </FormLabel>
         <Box
-          sx={{ minWidth: "400px" }}
+          sx={{ width: "100%" }}
           display="flex"
           justifyContent="center"
           flexDirection="column"
