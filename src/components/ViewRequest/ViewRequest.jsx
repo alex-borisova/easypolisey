@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import Box from "@mui/material/Box";
 
-import { apiUrl } from "../../constants/apiUrl";
 import { handleRespons } from "../../constants/handleRespons";
 import CheckForm from "./CheckForm/CheckForm";
 import RequestInfo from "./RequestInfo/RequestInfo";
@@ -13,7 +12,7 @@ export const ViewRequest = () => {
   const [openInformer, setOpenInformer] = React.useState(false);
 
   const getData = async (id, email) => {
-    await fetch(`${apiUrl}/application/${id}?email=${email}`, {
+    await fetch(`/application/${id}?email=${email}`, {
       method: "GET",
     }).then((res) => {
       if (res.status !== 200 && res.status !== 201) {

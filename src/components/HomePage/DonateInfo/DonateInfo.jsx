@@ -29,7 +29,7 @@ export const DonateInfo = () => {
             cover costs and also donate to the Ukraine Humanitarian Foundation.
           </Typography>
           <Button
-            href="https://www.paypal.com/donate/?hosted_button_id=C48S4DMFU9YCG"
+            href="https://buy.stripe.com/14k14e3gzfla9CoaEE"
             target="_blank"
             rel="noopener"
             variant="contained"

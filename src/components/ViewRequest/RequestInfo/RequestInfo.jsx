@@ -6,7 +6,6 @@ import Link from "@mui/material/Link";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 
-import { apiUrl } from "../../../constants/apiUrl";
 import { handleRespons } from "../../../constants/handleRespons";
 import CancelSuccess from "../../CancelRequest/CancelSuccess/CancelSuccess";
 import ErrorInformer from "../../CreateRequest/ErrorInformer/ErrorInformer";
@@ -35,7 +34,7 @@ export const RequestInfo = (props) => {
   const [openInformer, setOpenInformer] = React.useState(false);
 
   const putData = async () => {
-    await fetch(`${apiUrl}/application/${requestData.id}`, {
+    await fetch(`/application/${requestData.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

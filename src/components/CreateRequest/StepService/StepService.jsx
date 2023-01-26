@@ -6,14 +6,13 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 
-import { apiUrl } from "../../../constants/apiUrl";
 import { Typography } from "@mui/material";
 
 export const StepService = (props) => {
   const [services, setServices] = useState([]);
 
   const getServices = async () => {
-    await fetch(`${apiUrl}/service_types`, {
+    await fetch(`/service_types`, {
       method: "GET",
     })
       .then((response) =>
