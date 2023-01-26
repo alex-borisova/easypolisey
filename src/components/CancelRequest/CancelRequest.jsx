@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 
 import FormWrapper from "../common/FormWrapper/FormWrapper";
+import { apiUrl } from "../../constants/apiUrl";
 import { handleRespons } from "../../constants/handleRespons";
 import CancelSuccess from "../CancelRequest/CancelSuccess/CancelSuccess";
 
@@ -15,7 +16,7 @@ export const CancelRequest = () => {
   const navigate = useNavigate();
 
   const putData = async (id, email) => {
-    await fetch(`/application/${id}`, {
+    await fetch(`${apiUrl}/application/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

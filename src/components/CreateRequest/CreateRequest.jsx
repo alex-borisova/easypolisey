@@ -7,6 +7,7 @@ import Step from "@mui/material/Step";
 import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
 
+import { apiUrl } from "../../constants/apiUrl";
 import RequestContent from "./RequestContent/RequestContent";
 import SuccessPage from "./SuccessPage/SuccessPage";
 import ErrorInformer from "./ErrorInformer/ErrorInformer";
@@ -80,7 +81,7 @@ export const CreateRequest = () => {
   };
 
   const postData = async () => {
-    await fetch(`/application`, {
+    await fetch(`${apiUrl}/application`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

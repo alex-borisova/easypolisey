@@ -7,6 +7,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Typography from "@mui/material/Typography";
 
+import { apiUrl } from "../../../constants/apiUrl";
+
 export const StepLocation = (props) => {
   const { handleChange, requestData } = props;
 
@@ -27,7 +29,7 @@ export const StepLocation = (props) => {
   };
 
   const getLocations = async () => {
-    await fetch(`/service_types/${requestData.service_type_id}`, {
+    await fetch(`${apiUrl}/service_types/${requestData.service_type_id}`, {
       method: "GET",
     })
       .then((response) =>
