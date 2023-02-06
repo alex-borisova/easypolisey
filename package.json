@@ -1,6 +1,6 @@
 {
   "name": "easypolisey",
-  "proxy": "https://www.broneer-service.ru/",
+  "proxy": "http://165.227.150.173",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
