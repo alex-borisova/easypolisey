@@ -1,6 +1,6 @@
 {
   "name": "easypolisey",
-  "proxy": "http://165.227.150.173",
+  "proxy": "http://localhost:5000",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
